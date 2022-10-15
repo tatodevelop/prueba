@@ -674,7 +674,11 @@ class Elementor_Box_Favoritos_Precios extends \Elementor\Widget_Base {
 		$this->add_render_attribute( 'icon_list', 'class', 'elementor-icon-list-items' );?>	
 		<div class="container">
 			<div class="card-deck py-5" style="padding:10px">
-				<!-- <a href="#" class="tatito" style="text-decoration: none;"> -->
+				<a href="<?php if(! empty($settings['button_link']['url'])) {
+										echo $settings['button_link']['url'];								
+									} else {
+										echo '#';
+									}?>" style="text-decoration: none;">
 					<div class="card box-shadow">
 						<!-- SECCION RIBBON -->
 						<?php 
@@ -689,15 +693,15 @@ class Elementor_Box_Favoritos_Precios extends \Elementor\Widget_Base {
 							<!-- SECCION IMAGEN -->
 							<?php echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image_tour');?>
 							<!-- SECCION TITULO -->
-							<div class="tato-seccion-btn tato_titulo" style="text-align: left; color: #fff">
+							<div class="tato-seccion-btn tato_titulo">
 								<h5><?php echo $settings['title_tour'];?></h5>		
 							</div>
 							<!-- SECCION LISTA ICONOS -->
 							<div class="my-icon-wrapper">
 								<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
-							<div style="padding: 10px;">
-								<ul <?php echo $this->get_render_attribute_string( 'icon_list' ); ?> style="list-style: none;">
+							<!-- <div style="padding: 10px;"> -->
+								<ul <?php echo $this->get_render_attribute_string( 'icon_list' ); ?> style="list-style: none; margin: 10px;">
 									<?php
 									foreach ( $settings['icon_list'] as $index => $item ) :
 										$repeater_setting_key = $this->get_repeater_setting_key( 'text', 'icon_list', $index );
@@ -732,7 +736,7 @@ class Elementor_Box_Favoritos_Precios extends \Elementor\Widget_Base {
 									endforeach;
 									?>
 								</ul>
-							</div>	
+							<!-- </div>	 -->
 							<!-- SECCION PRECIO -->
 							<div class="text-right" style="text-align: right;">
 								<div class="titulo-precio pricing-card-title parrafo">
@@ -741,7 +745,7 @@ class Elementor_Box_Favoritos_Precios extends \Elementor\Widget_Base {
 								</div>
 							</div>
 							<!-- SECCION BOTON -->
-							<div class="tato-seccion-btn">
+							<!-- <div class="tato-seccion-btn">
 								<form action="<?php if(! empty($settings['button_link']['url'])) {
 										echo $settings['button_link']['url'];								
 									} else {
@@ -749,10 +753,10 @@ class Elementor_Box_Favoritos_Precios extends \Elementor\Widget_Base {
 									}?>">
 									<button type="submit" class="btn btn-tato-primary btn-lg btn-block"><?php echo $settings['buton_tour'];?></butto/>
 								</form>
-							</div>
+							</div> -->
 						</div>  
 					</div>
-				<!-- </a> -->
+				</a>
 			</div>
         </div>
 		<style>
@@ -761,7 +765,7 @@ class Elementor_Box_Favoritos_Precios extends \Elementor\Widget_Base {
 				list-style: none;
 			}
 			.box-shadow{
-				box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+				box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 80%);
 				border-radius: 10px 10px 10px 10px;
 			}
 
@@ -786,22 +790,6 @@ class Elementor_Box_Favoritos_Precios extends \Elementor\Widget_Base {
                 color: #fff;
                 background-color: #930d5f;
                 border-color: #431258;
-            }
-
-			.titulo-precio{
-                font-family: "Roboto", Sans-serif;
-                font-size: 1.3333333333333rem;
-                color: #431258;
-				line-height: initial;
-            }
-
-            .tato_titulo{
-                font-family: "Roboto", Sans-serif;
-                font-size: 1.3333333333333rem;
-                color: #fff;
-				/* background-color: #431258; */
-				padding: 0.5rem;
-				/* min-height: 3.2rem; */
             }
 
             /*Ribbon Shape CSS*/
